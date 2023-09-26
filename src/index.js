@@ -1,11 +1,18 @@
 require("dotenv").config();
 const express = require("express");
+const knex = require("./conexao");
 
 const app = express();
 
 app.use(express.json());
 
 app.get("/", async (req, res) => {
+  try {
+    const carros = await knex("carros");
+    return res.json(carros);
+  } catch (error) {
+    return res.status(500).json({ mensage: "erro do servidor" });
+  }
   return res.json("Api está Ok!");
 });
 

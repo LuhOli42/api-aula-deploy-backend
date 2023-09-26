@@ -9,6 +9,6 @@ app.get("/", async (req, res) => {
   return res.json("api funfando");
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Servidor na porta:${process.env.PORT}`);
 });
